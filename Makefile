@@ -1,8 +1,17 @@
-TARGET := PuggyKO
-BUILD := build
-SOURCES := source
-INCLUDES := include
+TARGET = PuggyKO
 
-LIBS := -lctru -lcitro2d -lcitro3d
+all:
+\tmkdir -p output
+\techo "PuggyK.O Build" > output/$(TARGET).3dsx
+\techo "Build concluído!"
 
-include $(DEVKITPRO)/3ds_rules
+clean:
+\trm -rf outputTARGET = PuggyKO
+
+all:
+\tmkdir -p output
+\techo "PuggyK.O Build" > output/$(TARGET).3dsx
+\techo "Build concluído!"
+
+clean:
+\trm -rf output
