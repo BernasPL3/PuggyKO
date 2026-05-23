@@ -1,49 +1,41 @@
 #include <3ds.h>
 #include <stdio.h>
+#include <string.h>
 
-#include "../include/gui.hpp"
-
-int main() {
-
+int main(int argc, char **argv)
+{
+    // Inicializa gráficos
     gfxInitDefault();
+
+    // Inicializa console na tela de cima
     consoleInit(GFX_TOP, NULL);
 
-    drawMainMenu();
+    printf("PuggyK.O iniciado!\n");
+    printf("Pressione START para sair.\n");
 
-    while (aptMainLoop()) {
-
+    // Loop principal
+    while (aptMainLoop())
+    {
+        // Atualiza inputs
         hidScanInput();
 
+        // Botões pressionados
         u32 kDown = hidKeysDown();
 
+        // Sai com START
         if (kDown & KEY_START)
             break;
 
-        if (kDown & KEY_A) {
-
-            printf("\nImporting Unity game...\n");
-        }
-
-        if (kDown & KEY_B) {
-
-            printf("\nImporting Godot game...\n");
-        }
-
-        if (kDown & KEY_X) {
-
-            printf("\nConverting assets...\n");
-        }
-
-        if (kDown & KEY_Y) {
-
-            printf("\nBuilding CIA...\n");
-        }
-
+        // Limpa frame
         gfxFlushBuffers();
         gfxSwapBuffers();
+
+        // Espera VBlank
         gspWaitForVBlank();
     }
 
+    // Finaliza gráficos
     gfxExit();
+
     return 0;
 }
