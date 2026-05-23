@@ -1,9 +1,10 @@
-TARGET = PuggyKO
+TARGET := PuggyKO
+BUILD := build
+SOURCES := source
+INCLUDES := include
 
-all:
-	mkdir -p output
-	echo "PuggyK.O Build" > output/$(TARGET).3dsx
-	echo "Build concluído!"
+LIBS := -lctru -lm
 
-clean:
-	rm -rf output
+DEVKITPRO ?= /opt/devkitpro
+
+include $(DEVKITPRO)/3ds_rules
